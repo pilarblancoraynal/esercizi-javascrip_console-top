@@ -24,3 +24,23 @@ if (budget >=price){
 }
 VM441:4 Giulio non può comprare il pc
 undefined
+_________________________
+var budget = 800
+undefined
+var price = 600
+undefined
+if (budget >=price){
+    console.log ('Giulio non può comprare il pc');
+} else {
+    console.log ('Giulio può comprare il pc...certamente!');
+}
+VM694:2 Giulio non può comprare il pc
+----attenzione: Da correggere il segno da >= a <= affinche vada come prevvisto----
+undefined
+if (budget <=price){
+    console.log ('Giulio non può comprare il pc');
+} else {
+    console.log ('Giulio può comprare il pc...certamente!');
+}
+VM704:4 Giulio può comprare il pc...certamente!
+undefined
