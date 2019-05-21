@@ -1,0 +1,26 @@
+alert('hello javascript')
+undefined
+console.log('hello console')
+VM118:1 hello console
+undefined
+var nome = Giulio
+VM142:1 Uncaught ReferenceError: Giulio is not defined
+    at <anonymous>:1:12
+(anonymous) @ VM142:1
+alert(nome)
+undefined
+var nome = "Giulio"
+undefined
+alert(nome)
+undefined
+var budget = 500
+undefined
+var price = 600
+undefined
+if (budget >=price){
+    console.log ('Giulio non può comprare il pc');
+} else {
+    console.log ('Giulio non può comprare il pc');
+}
+VM441:4 Giulio non può comprare il pc
+undefined
