@@ -1,0 +1,56 @@
+---------(diagrama 1)----------------
+var position = 1;
+undefined
+var medal;
+undefined
+if (position == 1){
+    medal = "oro";
+} else if (position ==2){
+    medal = "argento";
+}else if (position == 3){
+    medal = "bronzo";
+}else {
+    medal = "nessuna"
+}
+"oro"
+-----------------------------------
+position = 4;
+4
+if (position == 1){
+    medal = "oro";
+} else if (position ==2){
+    medal = "argento";
+}else if (position == 3){
+    medal = "bronzo";
+}else {
+    medal = "nessuna"
+}
+"nessuna"
+-----------(andare in spiaggia oppure rimanere a programmare in javascript)------------
+var temperature = 30;   
+undefined
+var weather = "soleggiato";
+undefined
+if(temperature >= 30 && weather == "soleggiato"){console.log("si va al mare");}else{console.log("si rimane a casa ad imparare Javascript");}
+VM1367:1 si va al mare
+---------------------
+weather = "nuvoloso"
+"nuvoloso"
+if(temperature >= 30 && weather == "soleggiato"){console.log("si va al mare");}else{console.log("si rimane a casa ad imparare Javascript");}
+VM1406:1 si rimane a casa ad imparare Javascript
+
+----se vogliamo che si compia solo 1 delle opzioni x andare al mare, allora bisogna cambiare l'algoritmo e sostituire "&&" con "||"---
+
+if(temperature >= 30 || weather == "soleggiato"){console.log("si va al mare");}else{console.log("si rimane a casa ad imparare Javascript");}
+VM1448:3 si va al mare
+
+----ma se anzi che cambiare 1 var, ne cambiamo tutte due...allora:
+
+temperature = "20"
+"20"
+if(temperature >= 30 || weather == "soleggiato"){console.log("si va al mare");}else{console.log("si rimane a casa ad imparare Javascript");}
+VM1477:1 si rimane a casa ad imparare Javascript
+undefined
+
+
+

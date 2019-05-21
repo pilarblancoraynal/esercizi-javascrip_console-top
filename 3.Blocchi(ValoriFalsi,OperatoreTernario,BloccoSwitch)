@@ -1,0 +1,138 @@
+----------------------------------------------
+VALORI FALSI X DEFINIZIONE (16)
+----------------------------------------------
+false
+false
+0
+0
+""
+""
+null
+null
+undefined
+undefined
+NaN
+NaN
+--------------------------------
+var number = 1;
+undefined
+if (number == 0){
+    console.log(0);
+}else {
+    console.log("Non è uguale a 0")
+}
+VM1665:4 Non è uguale a 0
+undefined
+var number = 0;
+undefined
+if (number == 0){
+    console.log(0);
+}else {
+    console.log("Non è uguale a 0")
+}
+VM1734:2 0
+undefined
+-----------(ma se vogliamo rendere il ns codice + pulito)----------
+if (!number){
+    console.log(0);
+}else {
+    console.log("Non è uguale a 0")
+}
+VM1768:2 0
+undefined
+-------------------------------
+var test = null;
+undefined
+
+if (test == null){
+    console.log ("test è null");
+}else { console.log ("test può essere utilizzata");
+      }
+VM1949:2 test è null
+-----(ma reendendolo pulito...notare che (!test) vuol dire "not test" oppure "test=null")---
+if (!test){
+    console.log ("test è null");
+}else { console.log ("test può essere utilizzata");
+      }
+VM1966:2 test è null
+
+---------------------------------------------------------------
+L'OPERATORE TERNARIO (17)
+---------------------------------------------------------------
+var budget = 500;
+undefined
+var price = 600;
+undefined
+budget >= price? console.log("compra il pc") : console.log("non compra il pc");
+VM2127:1 non compra il pc
+undefined
+
+----(se si cambia il budget)
+budget = 800;
+800
+budget >= price? console.log("compra il pc") : console.log("non compra il pc");
+
+VM2142:1 compra il pc
+undefined
+
+-----Conclusione: questo semplifica notevolmente il codice, solo la situazione deve esere semplice da gestire, se no il codice sarebbe poco leggibile)
+
+----------------------------------------------------------------------
+IL BLOCCO SWITCH
+-------------------------------------------------------------
+var position = 1;
+undefined
+var medal;
+undefined
+
+switch(position){
+    case 1:
+        medal = "oro"; break;
+    case 2:
+        medal = "argento"; break;  
+    case 3:
+        medal = "bronzo" ; break; 
+    default:
+        medal = "nessuna"; break;
+}
+"oro"
+position = 4;
+4
+switch(position){
+    case 1:
+        medal = "oro"; break;
+    case 2:
+        medal = "argento"; break;  
+    case 3:
+        medal = "bronzo" ; break; 
+    default:
+        medal = "nessuna"; break;
+}
+"nessuna"
+position = 2;
+2
+switch(position){
+    case 1:
+        medal = "oro"; break;
+    case 2:
+        medal = "argento"; break;  
+    case 3:
+        medal = "bronzo" ; break; 
+    default:
+        medal = "nessuna"; break;
+}
+"argento"
+position = 3;
+3
+switch(position){
+    case 1:
+        medal = "oro"; break;
+    case 2:
+        medal = "argento"; break;  
+    case 3:
+        medal = "bronzo" ; break; 
+    default:
+        medal = "nessuna"; break;
+}
+"bronzo"
+
