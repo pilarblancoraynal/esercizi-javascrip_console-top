@@ -154,41 +154,42 @@ undefined
 *****1. creare un ciclo for che scorre i numeri da 0 a 20 per ogni numero
 //// stampa in console se il numero è pari o dispari
 
-for (var i=0; i<21; i++){
-    var resto = 1%2;
+or (var i=0; i<21; i++){
+    var resto = i%2;
     if (resto === 0){
         console.log("il numero "+ i + " è uguale a pari");}
     else{
         console.log("il numero "+ i + " è dispari");
     }
 }
-VM3011:6 il numero 0 è dispari
-VM3011:6 il numero 1 è dispari
-VM3011:6 il numero 2 è dispari
-VM3011:6 il numero 3 è dispari
-VM3011:6 il numero 4 è dispari
-VM3011:6 il numero 5 è dispari
-VM3011:6 il numero 6 è dispari
-VM3011:6 il numero 7 è dispari
-VM3011:6 il numero 8 è dispari
-VM3011:6 il numero 9 è dispari
-VM3011:6 il numero 10 è dispari
-VM3011:6 il numero 11 è dispari
-VM3011:6 il numero 12 è dispari
-VM3011:6 il numero 13 è dispari
-VM3011:6 il numero 14 è dispari
-VM3011:6 il numero 15 è dispari
-VM3011:6 il numero 16 è dispari
-VM3011:6 il numero 17 è dispari
-VM3011:6 il numero 18 è dispari
-VM3011:6 il numero 19 è dispari
-VM3011:6 il numero 20 è dispari
+VM95:4 il numero 0 è uguale a pari
+VM95:6 il numero 1 è dispari
+VM95:4 il numero 2 è uguale a pari
+VM95:6 il numero 3 è dispari
+VM95:4 il numero 4 è uguale a pari
+VM95:6 il numero 5 è dispari
+VM95:4 il numero 6 è uguale a pari
+VM95:6 il numero 7 è dispari
+VM95:4 il numero 8 è uguale a pari
+VM95:6 il numero 9 è dispari
+VM95:4 il numero 10 è uguale a pari
+VM95:6 il numero 11 è dispari
+VM95:4 il numero 12 è uguale a pari
+VM95:6 il numero 13 è dispari
+VM95:4 il numero 14 è uguale a pari
+VM95:6 il numero 15 è dispari
+VM95:4 il numero 16 è uguale a pari
+VM95:6 il numero 17 è dispari
+VM95:4 il numero 18 è uguale a pari
+VM95:6 il numero 19 è dispari
+VM95:4 il numero 20 è uguale a pari
+undefined
 
 ****2 Riscrivi lo stesso algoritmo utlizzando il ciclo while
 
 var i=0;
 while (i<21){
-var resto = 1%2;
+var resto = i%2;
     if (resto === 0){
         console.log("il numero "+ i + " è uguale a pari");}
     else{
@@ -197,6 +198,29 @@ var resto = 1%2;
     
     i++
 }
+VM98:5 il numero 0 è uguale a pari
+VM98:7 il numero 1 è dispari
+VM98:5 il numero 2 è uguale a pari
+VM98:7 il numero 3 è dispari
+VM98:5 il numero 4 è uguale a pari
+VM98:7 il numero 5 è dispari
+VM98:5 il numero 6 è uguale a pari
+VM98:7 il numero 7 è dispari
+VM98:5 il numero 8 è uguale a pari
+VM98:7 il numero 9 è dispari
+VM98:5 il numero 10 è uguale a pari
+VM98:7 il numero 11 è dispari
+VM98:5 il numero 12 è uguale a pari
+VM98:7 il numero 13 è dispari
+VM98:5 il numero 14 è uguale a pari
+VM98:7 il numero 15 è dispari
+VM98:5 il numero 16 è uguale a pari
+VM98:7 il numero 17 è dispari
+VM98:5 il numero 18 è uguale a pari
+VM98:7 il numero 19 è dispari
+VM98:5 il numero 20 è uguale a pari
+20
+
 
 
 
