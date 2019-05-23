@@ -257,8 +257,11 @@ converTemp ('f',32)
 VM2904:5 32F è uguale a 0C
 undefined
 
+converTemp ('f',33.8)
+VM2904:5 33.8F è uguale a 0.9999999999999984C
 
-
+converTemp ('c',1)
+VM2904:4 1C è uguale a 33.8F
 
 
 
