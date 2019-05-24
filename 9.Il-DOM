@@ -1,0 +1,91 @@
+--------------------------
+47. Che cos'è il DOM
+--------------------------
+https://www.html.it/guide/guida-dom/
+
+DOM è l’acronimo che sta per Document Object Model, e rappresenta la struttura in cui è organizzata ogni pagina web. 
+Definito dal W3C, la sua conoscenza offre il pieno controllo di una pagina web, 
+ed è quindi la base per creare applicazioni in HTML e JavaScript, 
+con l’ambizione di pervenire alla scrittura di un codice universale per tutti i browser.
+
+
+
+
+-------------------------------------------------------
+48. Selezionare singoli elementi HTML con JavaScript
+-------------------------------------------------------
+Ce ne sono due modi di selezionare:
+
+1)document.getElementById('');
+
+IN HTML:
+        <script>
+            console.log('Hello Javascript');
+            var appTitle = document.getElementById("app-title");
+            console.log(appTitle.className);
+            appTitle.style.color = "red";
+            appTitle.style.fontSize = "50px";
+        </script>
+(VEDI FOTO/ DIAGRAMA)
+
+2)document.querySelector('#..');
+        <script>
+            console.log('Hello Javascript');
+            var appTitle = document.querySelector("#app-title");
+            console.log(appTitle.className);
+            appTitle.style.color = "red";
+            appTitle.style.fontSize = "50px";
+        </script>
+       
+
+-----------------------------------------------------------
+49. Selezionare un insieme di elementi HTML con JavaScript
+-----------------------------------------------------------
+Per selezionare in modo semplice un insieme di elementi HTML in Javascript e non uno ad uno...ad esempio selezionare questo:
+                <div class="tags">
+                    <span class="tag is-success is-large favorite-category">
+                        Trending
+                        <button class="delete is-small"></button>
+                    </span>
+                    <span class="tag is-success is-large favorite-category">
+                        Cats
+                        <button class="delete is-small"></button>
+                    </span>
+                </div>
+                
+     Come si fa?????
+     
+     
+          
+
+
+
+-------------------------------------------------
+50. Come utilizzare le classi a nostro favore
+-------------------------------------------------
+
+
+
+
+-------------------------------------------------
+51. Come gestire gli eventi generati dal mouse
+-------------------------------------------------
+
+
+
+------------------------------------------------------
+52. Come gestire gli eventi generati dalla tastiera
+-------------------------------------------------------
+
+
+
+
+
+-----------------------------------
+53. Il concetto di event bubbling
+-----------------------------------
+
+
+
+
+
