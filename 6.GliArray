@@ -1,0 +1,112 @@
+------------------------------------------
+32. Introduzione agli Array
+------------------------------------------
+Servono per manovrare una somma elevata di dati...ad esempio, siamo una pizzeria e abbiamo 15 pizze diverse, elencare una a una nelle variabili, diventa impegnativo...perciò, meglio utilizzare gli Array
+Gli ARRAY sono delle liste non ordinate e si possono mettere tutte su una sola variabile.
+
+var margherita = "margherita"
+undefined
+var vienese = "vienese"                
+undefined
+var prosciutoFunghi = "prosciuto e funghi"
+undefined
+
+diventano con GLI ARRAY ======>   var pizze = ["margherita", "vienese","prosciuto e funghi"]
+
+------------------------------------------
+33. Cos'è l'indice di un array
+------------------------------------------
+margherita
+"margherita"
+pizze
+(3) ["margherita", "vienese", "prosciuto e funghi"]    <===== Sono 3 elementi e gli indici sono 0,1 e 2
+
+pizze[0];
+"margherita"
+pizze[1];
+"vienese"
+pizze[2];
+"prosciuto e funghi"
+
+ma se mettiamo: pizze[3]; undefined (ci ritorna un "undefined")
+
+------------------------------------------
+34. Proprietà e metodi degli array
+----------------------------------------
+LENGTH
+var pizze = ["margherita", "vienese","prosciuto e funghi"]
+undefined
+pizze.length
+3
+pizze[pizze.length -1]
+"prosciuto e funghi"
+
+////Se vogliamo aggiungere una nuova pizza: 
+pizze.push("Bufala e Rucola")
+4
+pizze[pizze.length -1]
+"Bufala e Rucola"
+
+////e per eliminare elementi:
+pizze.pop()
+"Bufala e Rucola"
+pizze[pizze.length -1]
+"prosciuto e funghi"
+pizze.length
+3
+////Qui vediamo che mi ha eliminato "Bufala e Rucola" e l'array è ritornato a 3
+
+//////////Push e pop aggiungono ed eliminano un elemento alla fine degli array...se vogliamo un metodo più semplice, dobbiamo utilizzare:
+SPLICE
+pizze.splice(il numero di elementi che vogliamo agg/cancellare/cambiare, l'indice dell'elemento,"nuovo nome" caso mai volessimo sostituire, "se vogliamo agg. altra") 
+esempio se vogliamo eliminare la pizza viennesse:
+
+pizze.splice(1,1,"bufala e rucola","diavola")
+["vienese"]      <=======mi riporta il sistema la pizza eliminata
+pizze.length
+4                <=======vediamo che mi ha aggiunto quella nuova "diavola"
+
+------------------------------------------
+35. Utilizzare il ciclo for con gli array
+------------------------------------------
+for (var i=0; i<pizze.length; i++){
+    console.log(pizze[i]); }
+VM3625:2 margherita
+VM3625:2 bufala e rucola
+VM3625:2 diavola
+VM3625:2 prosciuto e funghi
+undefined
+
+------------------------------------------
+36. Il metodo map
+------------------------------------------
+pizze
+(4) ["margherita", "bufala e rucola", "diavola", "prosciuto e funghi"]
+var lettereInPizze = pizze.map (function(el){
+    return el.length;
+});
+undefined
+lettereInPizze
+(4) [10, 15, 7, 18]0: 101: 152: 73: 18length: 4__proto__: Array(0)
+
+
+esempio:
+margherita:1:ha10 caratteri
+diavola:3: ne ha 7
+
+--------------------------------------------
+37. Il ciclo forEach
+-------------------------------------------
+pizze.forEach(function(el){
+    console.log(el);
+});
+VM3836:2 margherita
+VM3836:2 bufala e rucola
+VM3836:2 diavola
+VM3836:2 prosciuto e funghi
+undefined
+
+/////è lo stesso risultati che ottengo con il metodo map...l'unica cosa che cambia è che è più semplice e conciso.
+
+
+

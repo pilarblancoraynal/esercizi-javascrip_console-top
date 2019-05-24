@@ -1,0 +1,268 @@
+-----------------------------------------------------------
+24. Introduzione alle funzioni
+-----------------------------------------------------------
+vengono utilizzate per riutilizzare il codice che è già stato fatto...a modo che si cambia una variabile, non dobbiamo riscrivere(o fare sempre copia-incolla) di tutto il codice.Servono a semplificare il lavoro.
+var budget = 500;
+undefined
+var price = 600;
+undefined
+if(budget>=price){
+    console.log("compra il computer")}
+undefined
+if(budget>=price){
+    console.log("compra il computer")
+}else{
+    console.log("non compra il computer");
+}
+VM252:4 non compra il computer
+undefined
+budget = 800;
+800
+if(budget>=price){
+    console.log("compra il computer")
+}else{
+    console.log("non compra il computer");
+}
+VM266:2 compra il computer
+
+FACENDO LA FUNZIONE:
+
+function CheckComputerPrice(){
+    if(budget>=price){
+        console.log("compra il computer")
+    }else{
+        console.log ("non compra il computer");
+    }
+}
+undefined
+price=900;
+900
+CheckComputerPrice()
+VM473:5 non compra il computer
+
+
+-----------------------------------------------------------
+25. Cosa sono e come utilizzare argomenti all'interno delle funzioni
+-----------------------------------------------------------
+All'interno delle parentesi tonde vanno dei dati che poi saranno utilizzati nella funzione stessa. Esempio:
+
+function checkIfEven(number){
+    var resto = number%2;
+    if(!resto){
+        console.log("Il numero " + number +" è pari");
+    }else{
+        console.log("Il numero " + number + " è dispari");
+    }
+}
+undefined
+
+function checkIfEven(number){
+    var resto = number%2;
+    if(!resto){
+        console.log("Il numero " + number +" è pari");
+    }else{
+        console.log("Il numero " + number + " è dispari");
+    }
+}
+undefined
+checkIfEven(2);
+VM809:4 Il numero 2 è pari
+undefined
+checkIfEven(9);
+VM809:6 Il numero 9 è dispari
+undefined
+
+-----------------------------------------------------------
+26. La keyword return
+-----------------------------------------------------------
+function checkIfEven(number){
+    var result = number%2;
+    if(!result) {
+        console.log("Il numero " +number+ " è pari");
+    }else{
+        console.log("Il numero " +number+ " è dispari");
+    }
+}
+undefined
+checkIfEven(2);
+VM1078:4 Il numero 2 è pari
+undefined
+checkIfEven(3);
+VM1078:6 Il numero 3 è dispari
+undefined   <===========ATTENZIONE, LA CONSOLE MI SEGNA "UNDEFINED", SE CAMBIO E AL POSTO DI "CONSOLE.LOG" METTO "RETURN",MI DARA' UNA STRINGA E NON MI DIRA' CHE E' INDEFINITO
+function checkIfEven(number){
+    var result = number%2;
+    if(!result) {
+        return("Il numero " +number+ " è pari");
+    }else{
+        return("Il numero " +number+ " è dispari");
+    }
+}
+undefined
+checkIfEven(3);
+"Il numero 3 è dispari" =====> ATTENZIONE, COME SI VEDE, ADESSO MI APPARE LA STRINGA MA SENZA DIRMI "UNDEFINED"
+
+ED E' COSì CHE ADESSO POSSIAMO UTILIZZARE QUESTRA STRINGA AL NS PIACIMENTO
+
+console.log(checkIfEven(3));
+VM1230:1 Il numero 3 è dispari
+undefined
+
+Ma attenzione che "return" ferma la esecuzione quando non lo ritiene più opportuno...esempio:
+
+function test() {
+    return 1;
+    return 2;
+    return 3;
+}
+undefined
+test();
+1
+ ===>STOP: Si ferma lì!
+
+-----------------------------------------------------------
+27. Definizione di scope delle variabili
+-----------------------------------------------------------
+ SCOPE indica la visibilità di una funzione e ce ne sono di 2 tipi: GLOBALE (creata fuori dalla funzione e dentro il codice può essere utilizzata ovunque) e DI FUNZIONE (creata dentro della funzione e di conseguenza può essere solo utilizzata con la funzione stessa)
+
+*SCOPE GLOBAL
+var number = 5;
+undefined
+function printNumber(){
+    console.log(number);
+}
+undefined
+printNumber();
+VM1407:2 5    <==== la var number =5 viene stampata perchè è stata creata al di fuori della funzione
+undefined
+
+*SCOPE DI FUNZIONE
+function createNumberVar(){
+    var newNumber = 10;
+}
+undefined
+console.log (newNumber);
+VM1537:1 Uncaught ReferenceError: newNumber is not defined        <===========DA ERRORE perchè la variabile è stata creata DENTRO la Funzione
+    at <anonymous>:1:14
+(anonymous) @ VM1537:1
+
+====> Se voglio che venga stampata la variabile, la devo inserire dentro la funzione stessa:
+function createNumberVar(){
+    var newNumber = 10;
+    console.log (newNumber);
+}
+undefined
+createNumberVar();
+VM1546:3 10              <=======ADESSO SI CHE VIENE STAMPATA
+undefined
+
+******Possiamo anche utilizzare RETURN ma sempre dentro la funzione:
+function createNumberVar(){
+    var newNumber = 10;
+    return (newNumber);
+}
+undefined
+console.log (createNumberVar());
+VM1654:1 10
+undefined
+
+
+-----------------------------------------------------------
+28. Che cos'è lo scope shadowing
+-----------------------------------------------------------
+SCOPE SHADOWING or OVERWRITTING
+
+var greeting = "ciao"
+undefined
+console.log("In Italia salutiamo con " + greeting);
+VM1773:1 In Italia salutiamo con ciao
+
+var greeting = "ciao"
+undefined
+console.log("In Italia salutiamo con " + greeting);
+VM1779:1 In Italia salutiamo con ciao
+undefined
+function greetingInEnglish(){
+    greeting = "Hello";
+    console.log("In Inglese salutiamo con " +greeting);
+}
+undefined
+greetingInEnglish();
+VM1932:3 In Inglese salutiamo con Hello
+
+console.log("In Italia salutiamo con " + greeting);
+VM1954:1 In Italia salutiamo con Hello
+undefined
+function greetingInEnglish(){
+    greeting = "Hello";
+    console.log("In Inglese salutiamo con " +greeting);
+}greetingInEnglish();console.log("In Italia salutiamo con " + greeting);
+VM1959:3 In Inglese salutiamo con Hello
+VM1959:4 In Italia salutiamo con Hello
+undefined
+
+MA SE FACCIAMO COSì:
+var greeting = "ciao";
+undefined
+console.log("In Italia salutiamo con " + greeting);
+VM2009:1 In Italia salutiamo con ciao
+undefined
+function greetingInEnglish(){
+    var greeting = "Hello";          <======SCRIVENDO "VAR GREETING" ANZICHE' SOLO "GREETING"
+    console.log("In Inglese salutiamo con " +greeting);
+} greetingInEnglish(); console.log ("In Italia salutiamo con " +greeting);
+VM2130:3 In Inglese salutiamo con Hello
+VM2130:4 In Italia salutiamo con ciao
+undefined
+
+
+-----------------------------------------------------------
+29. Utilizzare le funzioni come fossero delle classi
+-----------------------------------------------------------
+SORRY THIS VIDEO NOT EXISTS (COMMENTO SCRITTO SOTTO LA LEZIONE)
+
+
+-----------------------------------------------------------
+30/31. Sfida sulle funzioni con Soluzione
+-----------------------------------------------------------
+/1.Scrivi una funzione calcolateDogAge che prende in input 2 parametri "name" & "age"
+///che rappresentano il nome e l'età del cane. Il console.log dovrà stampare l'età "umana" del cane considerando (1 anno cane = 7 anni umani)
+
+function calculateDogAge (name, age){
+    var humanAge = age * 7;
+    console.log (name + " ha " + humanAge + " anni humani");
+}
+undefined
+calculateDogAge ("Boby", 10);
+VM2456:3 Boby ha 70 anni humani
+undefined
+
+
+
+
+
+/2. Scrivi una funzione che converte la temperatura la gradi C a gradi F e viceversa
+///considerando che 0°C=32°F secondo la formula (0°C x 9/5) + 32 = 32°F
+
+function converTemp (unit, value) {
+    if (unit == 'c') {
+        var convertedTemp = (value * 9/5)+32;
+        console.log(value + "C è uguale a "+ convertedTemp + "F")} else if (unit == 'f'){var convertedTemp = (value -32)*5/9;
+        console.log(value + "F è uguale a "+ convertedTemp + "C")}}
+undefined
+converTemp ('c',0)
+VM2904:4 0C è uguale a 32F
+undefined
+converTemp ('f',32)
+VM2904:5 32F è uguale a 0C
+undefined
+
+converTemp ('f',33.8)
+VM2904:5 33.8F è uguale a 0.9999999999999984C
+
+converTemp ('c',1)
+VM2904:4 1C è uguale a 33.8F
+
+
+
+
