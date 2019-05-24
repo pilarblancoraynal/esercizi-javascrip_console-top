@@ -1,44 +1,184 @@
 ------------------------------------------------
 38. Introduzione agli oggetti
 ------------------------------------------------
+typeof("hello")
+"string"       =====>esempio dato primitivo ( string, numero, bolleani, null, undefined)
+pizze
+(3) ["margherita", "vienese", "prosciuto e funghi"]
+typeof(pizze)
+"object"          ======>esempio ogetto, gli array sono oggetti, non sono più dati primitivi...
 
+Gli ogetti definiranno le proprietà e possibili azioni di un'entità:
 
+var pizzamargherita ={
+    name:"margherita",
+    price:7,
+    ingredients: ["salsa", "mozzarella", "basilico"]
+};
+undefined
+pizzamargherita
+{name: "margherita", price: 7, ingredients: Array(3)}
 
+vediamo le propietà nella prox lezione.
 
 ------------------------------------------------
 39. Il metodo map con gli oggetti
 ------------------------------------------------
+Si crea un array con oggetti...ad esempio:
 
+pizze = [{
+    name:"margherita",
+    price:6,
+},
+{
+    name:"vienesse",
+    price:7,
+}, 
+{
+    name:"diavola",
+    price:8,
+},        
+{
+    name:"prosciuto e funghi",
+    price:10,
+},]
 
+pizze
+(4) [{…}, {…}, {…}, {…}]
+var pizzaPrice = pizze.map(function(el){
+    return el.price;
+});
+undefined
+pizzaPrice
+(4) [6, 7, 8, 10]0: 61: 72: 83: 10length: 4__proto__: Array(0)
+
+pizzaPrice
+(4) [6, 7, 8, 10]0: 61: 72: 83: 10length: 4__proto__: Array(0) <====== Sono 4 elementi con [i prezzi]
 
 
 ------------------------------------------------
 40. Come accedere alle proprietà di un oggetto
 ------------------------------------------------
-
-
-
+Ad esempio causa l'inflazione vogliamo cambiare un prezzo:
+pizzaPrice
+(4) [6, 7, 8, 10]0: 61: 72: 83: 10length: 4__proto__: Array(0)
+var pizzamargherita ={
+    name:"margherita",
+    price:7,
+    ingredients: ["salsa", "mozzarella", "basilico"]
+};
+undefined
+pizzamargherita
+{name: "margherita", price: 7, ingredients: Array(3)}
 
 
 ---------------------------------------------------------
 41. Come cambiare il valore delle proprietà di un oggetto
 ---------------------------------------------------------
+////si cambia il prezzo:
 
-
-
-
+pizzamargherita.price = 11
+11
+pizzamargherita
+{name: "margherita", price: 11, ingredients: Array(3)}
 
 ------------------------------------------------
 42. Aggiungere metodi agli oggetti
 ------------------------------------------------
 
+var person = {
+    name: 'Andrea',
+    età:'26',
+    greet: function(){
+        console.log (this.name + ' sta salutando')}}
+person.greet()
+VM4686:5 Andrea sta salutando
 
-
-
-
+stesse funzioni e risultati degli esercizi precedenti...solo che questa volta stiamo utilizzando "gli oggetti"
 
 ------------------------------------------------
 43/44.Sfida con soluzione su array ed oggetti
 ------------------------------------------------
+//1. Crea un algoritmo che dato un array di caratteri (per esempio[3,'a','a',2,3,'a',3,'a',2,4,9,3])
+///vada a stampare un console quale di questi caratteri si trova più volte (ad esempio 'a' si trova 4 volte)
+
+var Elements = [3,'a','a',2,3,'a',3,'a',2,4,9,3]
+undefined
+var ocurrences ={}
+undefined
+Elements.forEach(function(element) {
+    if (occurrences[element]) {
+        occurrences[element]++
+    } else { 
+        occurrences[element] = 1}
+})
+VM5144:2 Uncaught ReferenceError: occurrences is not defined
+    at <anonymous>:2:5
+    at Array.forEach (<anonymous>)
+    at <anonymous>:1:10
+(anonymous) @ VM5144:2
+(anonymous) @ VM5144:1
+Elements.forEach(function(Element) {
+    if (ocurrences[Element]) {
+        ocurrences[Element]++
+    } else { 
+        ocurrences[Element] = 1 }
+})
+undefined
+ocurrences
+{2: 2, 3: 4, 4: 1, 9: 1, a: 4}2: 23: 44: 19: 1a: 4__proto__: Object
+
+var max = 0
+undefined
+var maxIndex = 0
+undefined
+Elements.forEach(function(Element) {
+    if (ocurrences[Element]) {
+        ocurrences[Element]++
+    } else { 
+        ocurrences[Element] = 1 }
+    if ( max < ocurrences[Element]){
+        max = ocurrences[Element];
+        maxIndex=Element 
+    }})
+undefined
+
+console.log(max)
+VM5427:1 4
+undefined
+
+console.log(maxIndex)
+VM5473:1 a
+undefined
+console.log ("L'elemento "+ maxIndex + " è presente più di tutti con " + max + " occorrenze.")
+VM5668:1 L'elemento a è presente più di tutti con 4 occorrenze.
+undefined
+
+
+//2.Crea un algoritmo che data una stringa di caratteri (per esempio 'The Quick Brown Fox')
+/// vai a stampare in console la medessima stringa cambiando le lettere maioscole a minuscole (ad esempio: "tHE qUICK bROWN fOX")
+
+var string = 'The Quick Brown Fox'
+undefined
+string.split
+ƒ split() { [native code] }
+string.split('')
+(19) ["T", "h", "e", " ", "Q", "u", "i", "c", "k", " ", "B", "r", "o", "w", "n", " ", "F", "o", "x"]
+
+var invertedCasing = string.split('').map(function(element){
+    if (element === element.toLowerCase()){
+        return element.toUpperCase()
+    } return element.toLowerCase()})
+undefined
+
+console.log(invertedCasing)
+VM6062:1 (19) ["t", "H", "E", " ", "q", "U", "I", "C", "K", " ", "b", "R", "O", "W", "N", " ", "f", "O", "X"]
+undefined
+
+invertedCasing.join('')
+"tHE qUICK bROWN fOX"
+
+
+
 
 
