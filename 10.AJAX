@@ -1,0 +1,103 @@
+
+https://www.w3schools.com/xml/ajax_intro.asp
+
+-------------------------------------------------
+54. Cosa sono le API
+--------------------------------------------------
+API: Pezzo di codice che si trova sul server e non sul lato client, che ci riporta delle info.
+esempio: API di Giphy: https://developers.giphy.com/
+documentazione: https://developers.giphy.com/docs/
+ 
+ poi....Create an app> nome e descrizione> ci riporta l'API KEY: 
+lacergif-pbr
+Api Key:
+n2TYvewq6CUaHki40p6XdKdt1pdC0AJY
+
+poi...docs>code examples> copia-incolla url (quello sotto python) e in una nuova finestra: http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY
+
+=====> copia-incolla codice fino a qui: http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=
+=========>aggiungi poi subito dopo la tua API-KEY: n2TYvewq6CUaHki40p6XdKdt1pdC0AJY
+
+E MI RIPORTA A SCHERMO UNA SERIE DI GIF ( LINKS DI GIF)...QUINDOI LE API SONO LINK CHE RIPORTA UNA DETERMINATA AZIENDA IN QUESTO CASO GIPHY CHE ESPONGONO DATI PER L'UTILIZZO (ANCHE GOOGLE LO FA)
+GOOGLE ATTRAVERSO API CI FORNISCE INFO RELETIVE ALLA MAPA...
+A PARTIRE DELLA PROSSIMA LEZIONE ANDIAMO A VEDERE COME INTEGRARE LE API SUL NS PROGETTO.
+
+-------------------------------------------------
+55. Come creare una richiesta HTTP
+--------------------------------------------------
+httpRequest.open("GET", )
+GET (prendere delle info da un server presente da un url)
+POST (creare qualcosa su un server
+PUT/PATCH (agg.info su un server)
+DELETE(eliminare info su un server)
+
+https://developers.giphy.com/docs/ > Trending Endpoint >
+
+ <script>
+            /*
+           var searchButton = document.getElementById ("search-gif-btn");
+           var searchInput = document.querySelector("#search-gif-input");
+           
+           searchInput.addEventListener("keydown",function(event){
+               console.log(event.key);
+           });
+
+
+           searchButton.addEventListener("click",function(event){
+               console.log(event);
+           });
+
+           searchButton.addEventListener("mouseenter",function(event){
+               console.log(event);
+           });
+                */
+           httpRequest = new XMLHttpRequest();
+
+           httpRequest.onload = function (){
+               console.log(JSON.parse(httpRequest.response));
+           };
+
+           httpRequest.open("GET", "http://api.giphy.com/v1/gifs/trending?api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY" );
+           httpRequest.send();
+
+        </script>
+
+e la console mi riporterà: {data: Array(25), pagination: {…}, meta: {…}}
+che sglosato sarebbe------>{data: Array(25), pagination: {…}, meta: {…}}data: Array(25)0: {type: "gif", id: "xThtan8ODW9GNooAIE", slug: "reactionseditor-xThtan8ODW9GNooAIE", url: "https://giphy.com/gifs/reactionseditor-xThtan8ODW9GNooAIE", bitly_gif_url: "https://gph.is/2GwHObM", …}1: {type: "gif", id: "3o7btOpZgTU1UtzpaU", slug: "reactionseditor-sassy-sass-3o7btOpZgTU1UtzpaU", url: "https://giphy.com/gifs/reactionseditor-sassy-sass-3o7btOpZgTU1UtzpaU", bitly_gif_url: "https://gph.is/2qUhLqG", …}2: {type: "gif", id: "3oKIPbNb1vWdftiVLq", slug: "reactionseditor-interesting-hmm-3oKIPbNb1vWdftiVLq", url: "https://giphy.com/gifs/reactionseditor-interesting-hmm-3oKIPbNb1vWdftiVLq", bitly_gif_url: "https://gph.is/2tbzK8z", …}3: {type: "gif", id: "xUOwG7j3kKfNQ0t0DS", slug: "reactionseditor-xUOwG7j3kKfNQ0t0DS", url: "https://giphy.com/gifs/reactionseditor-xUOwG7j3kKfNQ0t0DS", bitly_gif_url: "https://gph.is/2Gs36Y6", …}4: {type: "gif", id: "l49JL8rJ2vOEXlmM0", slug: "reaction-l49JL8rJ2vOEXlmM0", url: "https://giphy.com/gifs/reaction-l49JL8rJ2vOEXlmM0", bitly_gif_url: "https://gph.is/2n9MwDw", …}5: {type: "gif", id: "fTzV3m753QrFSkvrm5", slug: "memorial-day-remember-our-heroes-american-fTzV3m753QrFSkvrm5", url: "https://giphy.com/gifs/memorial-day-remember-our-heroes-american-fTzV3m753QrFSkvrm5", bitly_gif_url: "https://gph.is/g/4bvj9y3", …}6: {type: "gif", id: "3ohzdVvfiZ4G5yTwly", slug: "reactionseditor-3ohzdVvfiZ4G5yTwly", url: "https://giphy.com/gifs/reactionseditor-3ohzdVvfiZ4G5yTwly", bitly_gif_url: "https://gph.is/2qtYuvO", …}7: {type: "gif", id: "OqHcWuD8Vzn8Deohwu", slug: "evite-america-flag-OqHcWuD8Vzn8Deohwu", url: "https://giphy.com/gifs/evite-america-flag-OqHcWuD8Vzn8Deohwu", bitly_gif_url: "https://gph.is/2KcJTe8", …}8: {type: "gif", id: "m7BTtLWhjkEJa", slug: "world-power-president-m7BTtLWhjkEJa", url: "https://giphy.com/gifs/world-power-president-m7BTtLWhjkEJa", bitly_gif_url: "https://gph.is/1OPrPW5", …}9: {type: "gif", id: "l4FGzT4Y4o3gzANPi", slug: "reactionseditor-l4FGzT4Y4o3gzANPi", url: "https://giphy.com/gifs/reactionseditor-l4FGzT4Y4o3gzANPi", bitly_gif_url: "https://gph.is/2r25SKW", …}10: {type: "gif", id: "3o7btZ1Gm7ZL25pLMs", slug: "reactionseditor-3o7btZ1Gm7ZL25pLMs", url: "https://giphy.com/gifs/reactionseditor-3o7btZ1Gm7ZL25pLMs", bitly_gif_url: "https://gph.is/2rQvpIX", …}11: {type: "gif", id: "l0Iy9D4PZKRZ6chcQ", slug: "reactionseditor-l0Iy9D4PZKRZ6chcQ", url: "https://giphy.com/gifs/reactionseditor-l0Iy9D4PZKRZ6chcQ", bitly_gif_url: "https://gph.is/2sHOrBg", …}12: {type: "gif", id: "l0IymiszgmwwfB5K0", slug: "reactionseditor-sassy-sass-l0IymiszgmwwfB5K0", url: "https://giphy.com/gifs/reactionseditor-sassy-sass-l0IymiszgmwwfB5K0", bitly_gif_url: "https://gph.is/2qQYDpv", …}13: {type: "gif", id: "ule4vhcY1xEKQ", slug: "reactionseditor-cat-typing-ule4vhcY1xEKQ", url: "https://giphy.com/gifs/reactionseditor-cat-typing-ule4vhcY1xEKQ", bitly_gif_url: "https://gph.is/2oW0XKw", …}14: {type: "gif", id: "xUPGcl3ijl0vAEyIDK", slug: "reactionseditor-xUPGcl3ijl0vAEyIDK", url: "https://giphy.com/gifs/reactionseditor-xUPGcl3ijl0vAEyIDK", bitly_gif_url: "https://gph.is/2pznJI8", …}15: {type: "gif", id: "3o7WICNuCJ45KjaX2U", slug: "reactionseditor-3o7WICNuCJ45KjaX2U", url: "https://giphy.com/gifs/reactionseditor-3o7WICNuCJ45KjaX2U", bitly_gif_url: "https://gph.is/2Gu43in", …}16: {type: "gif", id: "3o7btV5GAWaGkwjTrO", slug: "reactionseditor-3o7btV5GAWaGkwjTrO", url: "https://giphy.com/gifs/reactionseditor-3o7btV5GAWaGkwjTrO", bitly_gif_url: "https://gph.is/2oeHEMz", …}17: {type: "gif", id: "3o8doT9BL7dgtolp7O", slug: "foxinternational-reaction-simpsons-carl-3o8doT9BL7dgtolp7O", url: "https://giphy.com/gifs/foxinternational-reaction-simpsons-carl-3o8doT9BL7dgtolp7O", bitly_gif_url: "https://gph.is/1Q7c4eV", …}18: {type: "gif", id: "l0MYxcZ7Yquu9kz7i", slug: "declanmckenna-delcan-mckenna-l0MYxcZ7Yquu9kz7i", url: "https://giphy.com/gifs/declanmckenna-delcan-mckenna-l0MYxcZ7Yquu9kz7i", bitly_gif_url: "https://gph.is/2f6c0gy", …}19: {type: "gif", id: "10H1Qp7vrsEKc", slug: "leonardo-dicaprio-titanic-young-leo-10H1Qp7vrsEKc", url: "https://giphy.com/gifs/leonardo-dicaprio-titanic-young-leo-10H1Qp7vrsEKc", bitly_gif_url: "https://gph.is/1SlBD8h", …}20: {type: "gif", id: "j3VVG1Ihq8TnKuXpCO", slug: "originals-j3VVG1Ihq8TnKuXpCO", url: "https://giphy.com/gifs/originals-j3VVG1Ihq8TnKuXpCO", bitly_gif_url: "https://gph.is/g/4Mm6eW4", …}21: {type: "gif", id: "12MsV8KYs1PueI", slug: "90s-1990s-empire-records-12MsV8KYs1PueI", url: "https://giphy.com/gifs/90s-1990s-empire-records-12MsV8KYs1PueI", bitly_gif_url: "https://gph.is/21cHcMb", …}22: {type: "gif", id: "ZaF4Vl1NQxwaVsStQU", slug: "raspberry-blowing-raspberries-blow-a-ZaF4Vl1NQxwaVsStQU", url: "https://giphy.com/gifs/raspberry-blowing-raspberries-blow-a-ZaF4Vl1NQxwaVsStQU", bitly_gif_url: "https://gph.is/g/4MgNAp6", …}23: {type: "gif", id: "KEEhSyqCVtg5y", slug: "george-costanza-lie-KEEhSyqCVtg5y", url: "https://giphy.com/gifs/george-costanza-lie-KEEhSyqCVtg5y", bitly_gif_url: "https://gph.is/1HSrSJQ", …}24: {type: "gif", id: "5w4QZx27jDM8U", slug: "mrw-hire-cropduster-5w4QZx27jDM8U", url: "https://giphy.com/gifs/mrw-hire-cropduster-5w4QZx27jDM8U", bitly_gif_url: "https://gph.is/2nNgQSz", …}length: 25__proto__: Array(0)meta: {status: 200, msg: "OK", response_id: "5ce9b75f7139686851175f35"}pagination: {total_count: 109580, count: 25, offset: 0}__proto__: Object
+ IL FORMATO JSON è quello più utilizzato per mettere delle info...
+adesso bisogna mettere queste gif sul ns codice HTML...
+
+---------------------------------------------------------
+56. Come aggiungere del codice HTML attraverso JavaScript
+---------------------------------------------------------
+
+<script>
+httpRequest = new XMLHttpRequest();
+       
+           httpRequest.onload = function (){
+               var gifsData =JSON.parse(httpRequest.response).data;
+               var html = "";
+               gifsData.forEach(function(gif){
+                   var url = gif.images.downsized_medium.url;
+                   var width = gif.images.downsized_medium.width;
+                   var height = gif.images.downsized_medium.height;
+
+
+
+                   html += "<div class='column is-one-quarter'>";
+                   html += "<img src="+ url + " width=" + width +" height=" + height + " />";
+                   html += "</div>";
+               });
+               
+               console.log(html);
+               document.getElementById("gifs-container").innerHTML = html;
+           };
+
+           httpRequest.open("GET", "http://api.giphy.com/v1/gifs/trending?api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY" );
+           httpRequest.send();
+
+ </script>
+ 
+ ======>Importante : abbiamo fatto un "parsing" dei dati, poi abbiamo passato questi dati in html (direttamente dalla libreria bulba) 
+ e con la propietà "innerHTML" è POSSIBILE modificare un elemento HTML a partire da JAVASCRIPT.
+

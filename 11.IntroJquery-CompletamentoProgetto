@@ -1,0 +1,70 @@
+-------------------------------------
+57. Una breve introduzione a JQuery
+-------------------------------------
+Libreria utilizzata per semplificare e abreviare il lavoro in JavaScript. X scrivere codice in forma più concisa e semplificata.
+ andiamo in google "jquery cdn"..poi direttamente su: https://cdnjs.com/libraries/jquery/ 
+ e copiamo del : https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js => lo script-tag (che sarebbe: <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>)
+ e lo mettiamo prima del ns lungo script.
+ 
+ JQUERY è stata con noi per 10 anni e ancora ci sono aziende che l'utilizzano...è importante conoscerla anche se adesso ci sono altri metodi più alla vanguardia.
+ 
+</section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <script>
+        
+           var searchButton = $("#search-gif-btn");
+           var searchInput = $("#search-gif-input");
+        
+           searchInput.click(function(event){
+            console.log(event.key);
+           })
+           
+           searchButton.click(function(event){
+               console.log(event);
+           });
+
+           $.getJSON({
+               url: "http://api.giphy.com/v1/gifs/trending?api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY",
+               success: function(res){
+                var gifsData =res.data;
+                var html = "";
+                gifsData.forEach(function(gif){
+                   var url = gif.images.downsized_medium.url;
+                   var width = gif.images.downsized_medium.width;
+                   var height = gif.images.downsized_medium.height;
+
+                   html += "<div class='column is-one-quarter'>";
+                   html += "<img src="+ url + " width=" + width +" height=" + height + " />";
+                   html += "</div>";
+               });
+
+               $("#gifs-container").append(html);
+               }
+           })
+           
+        </script>
+    </body>
+</html>
+
+-------------------------------------
+58. Andiamo a pulire il codice
+-------------------------------------
+si crea un file "app.js" e lì si passa tutto lo script e su html rimane solo: 
+.....</section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="app.js"></script>    ======> SOLO UN RICHIAMO AL FILE...
+    </body>
+</html>
+
+------------------------------------------------------------
+66. Mischiare l'ordine di un array utilizzando un algoritmo
+------------------------------------------------------------
+
+
+
+
+
+
+
+

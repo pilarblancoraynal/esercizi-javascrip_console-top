@@ -219,9 +219,24 @@ undefined
 -----------------------------------------------------------
 29. Utilizzare le funzioni come fossero delle classi
 -----------------------------------------------------------
-SORRY THIS VIDEO NOT EXISTS (COMMENTO SCRITTO SOTTO LA LEZIONE)
-
-
+Javascript è object oriented e ci permette di utilizzare delle classi
+function Dog (name, breed) {
+    this.name = name;
+    this.breed = breed; 
+    this.greet = function () {
+    console.log('wof wpf sono '+ this.name);
+    }
+   }
+undefined
+var bobby = new Dog ('Bobby', 'beagle')
+undefined
+bobby.greet()
+VM363:3 wof wpf sono Bobby
+undefined
+bobby.name
+"Bobby"
+bobby.breed
+"beagle"
 -----------------------------------------------------------
 30/31. Sfida sulle funzioni con Soluzione
 -----------------------------------------------------------
