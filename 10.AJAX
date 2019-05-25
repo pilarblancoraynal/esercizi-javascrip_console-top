@@ -4,10 +4,23 @@ https://www.w3schools.com/xml/ajax_intro.asp
 -------------------------------------------------
 54. Cosa sono le API
 --------------------------------------------------
+API: Pezzo di codice che si trova sul server e non sul lato client, che ci riporta delle info.
+esempio: API di Giphy: https://developers.giphy.com/
+documentazione: https://developers.giphy.com/docs/
+ 
+ poi....Create an app> nome e descrizione> ci riporta l'API KEY: 
+lacergif-pbr
+Api Key:
+n2TYvewq6CUaHki40p6XdKdt1pdC0AJY
 
+poi...docs>code examples> copia-incolla url (quello sotto python) e in una nuova finestra: http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY
 
+=====> copia-incolla codice fino a qui: http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=
+=========>aggiungi poi subito dopo la tua API-KEY: n2TYvewq6CUaHki40p6XdKdt1pdC0AJY
 
-
+E MI RIPORTA A SCHERMO UNA SERIE DI GIF ( LINKS DI GIF)...QUINDOI LE API SONO LINK CHE RIPORTA UNA DETERMINATA AZIENDA IN QUESTO CASO GIPHY CHE ESPONGONO DATI PER L'UTILIZZO (ANCHE GOOGLE LO FA)
+GOOGLE ATTRAVERSO API CI FORNISCE INFO RELETIVE ALLA MAPA...
+A PARTIRE DELLA PROSSIMA LEZIONE ANDIAMO A VEDERE COME INTEGRARE LE API SUL NS PROGETTO.
 
 -------------------------------------------------
 55. Come creare una richiesta HTTP
