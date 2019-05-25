@@ -37,7 +37,24 @@ IN HTML:
             appTitle.style.fontSize = "50px";
         </script>
        
+///////////       
+ Per selezionare i vari elementi possiamo utilizzare "id" e "class"  
+        <body>
+        <nav class="navbar is-fixed-top is-warning" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://lacerba.io">
+                    <strong class="test class-test" id="app-title"> LacerGif </strong>
+                </a>
+....poi:
+ <script>
+            console.log('Hello Javascript');
+            var appTitle = document.querySelector("#app-title");
+            console.log(appTitle.className);
+            appTitle.style.color = "red";
+            appTitle.style.fontSize = "50px";
+        </script>
 
+//////////
 -----------------------------------------------------------
 49. Selezionare un insieme di elementi HTML con JavaScript
 -----------------------------------------------------------
@@ -55,37 +72,152 @@ Per selezionare in modo semplice un insieme di elementi HTML in Javascript e non
                 
      Come si fa?????
      
+         <script>
+           var tags = document.getElementsByClassName("tag");
+           console.log
+         </script>
+         
+         ...e il console mi riporta: HTMLCollection(2) [span.tag.is-success.is-large.favorite-category, span.tag.is-success.is-large.favorite-category]0: span.tag.is-success.is-large.favorite-category1: span.tag.is-success.is-large.favorite-categorylength: 2__proto__: HTMLCollectionitem: ƒ item()length: (...)namedItem: ƒ namedItem()constructor: ƒ HTMLCollection()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "HTMLCollection"get length: ƒ length()__proto__: Object
      
-          
+           <script>
+           var tags = document.getElementsByClassName("tag");
+           console.log(tags.length);  <=========mi riporta il console:2
+        </script>
+        
+        e così:
+        <script>
+           var tags = document.querySelectorAll(".tag");<===== con ".tag" perchè si prende di mira una classe
+           console.log(tags);  
+        </script>
+        
+        =========> e ci viene riportato: NodeList(2) [span.tag.is-success.is-large.favorite-category, span.tag.is-success.is-large.favorite-category]
+                                         0: span.tag.is-success.is-large.favorite-category
+                                         1: span.tag.is-success.is-large.favorite-category
+                                            length: 2
+__                                          proto__: NodeList
 
+le HtmlCollection sono live e  le NodeList sono statiche. Esempio:
 
-
+        <script>
+           var tagsHtmlCollection = document.getElementsByClassName("tag");
+           var tagsNodeList = document.querySelectorAll(".tag");
+           console.log(tagsHtmlCollection);
+           console.log(tagsNodeList); 
+        </script>
+        
+        ==============> e mi riporta la console: HTMLCollection(2) [span.tag.is-success.is-large.favorite-category, span.tag.is-success.is-large.favorite-category]0: span.tag.is-success.is-large.favorite-category1: span.tag.is-success.is-large.favorite-categorylength: 2__proto__: HTMLCollection
+                                                 index.html:56 
+                                                 NodeList(2) [span.tag.is-success.is-large.favorite-category, span.tag.is-success.is-large.favorite-category]0: span.tag.is-success.is-large.favorite-category1: span.tag.is-success.is-large.favorite-categorylength: 2__proto__: NodeList
+HTMLCollection: prende il selettore e si aggiorna a seconda delle modifiche (tagsHtmlCollection<3)
+NodeList:è statica e non si aggiorna con le modifiche. (tagsNodeList.length<2)
+esempio agg. in elements, seleziona tags e poi edit as HTML: <div class="tags">
+                    <span class="tag is-success is-large favorite-category">
+                        Trending
+                        <button class="delete is-small"></button>
+                    </span>
+                    <span class="tag is-success is-large favorite-category">
+                        Cats
+                        <button class="delete is-small"></button>
+                    </span>
+    <span class="tag is-success is-large favorite-category">
+                        funny
+        
+                        <button class="delete is-small"></button>
+                    </span>
+                </div>
+                
+                POI IN CONSOLE: tagsHtmlCollection.length
+                                                        3
+                                tagsNodeList.length
+                                                        2
+                                                        
+                                                        (VEDI IMG DIAGRAMA-ESERCIZI)
+                                                        
+ ///////Sapendo già identificare gli insieme si possono fare modifiche nel css...ad esempio:
+ 
+         <script>
+           var tagsHtmlCollection = document.getElementsByClassName("tag");
+           var tagsNodeList = document.querySelectorAll(".tag");
+           for(var i=0; i<tagsHtmlCollection.length; i++){
+               tagsHtmlCollection[i].style.background = "red";
+           }
+        </script>
+        
+     /////oppure(che sarebbe uguale):
+        <script>
+           var tagsHtmlCollection = document.getElementsByClassName("tag");
+           var tagsNodeList = document.querySelectorAll(".tag");
+           for(var i=0; i<tagsNodeList.length; i++){
+               tagsNodeList[i].style.background = "red";
+           }
+        </script>
+ 
+ Come utilizzare le classi in maniera più ottimale? prox lezione:
+ 
 -------------------------------------------------
 50. Come utilizzare le classi a nostro favore
 -------------------------------------------------
-
+        <script>
+           var appTitle = document.getElementById("app-title");
+           console.log(appTitle.classList);
+        </script>
+        =====> Ci riporta: DOMTokenList(2) ["test", "class-test", value: "test class-test"]
+                                0: "test"
+                                1: "class-test"
+                                length: 2
+                                value: "test class-test"
+                                __proto__: DOMTokenList
 
 
 
 -------------------------------------------------
 51. Come gestire gli eventi generati dal mouse
 -------------------------------------------------
-
-
+In head agg.: <style> .red-text{
+                    color: red;
+                        }
+                </style>
+                
+                poi:    <script>
+                        var appTitle = document.getElementById("app-title");
+                         console.log(appTitle.classList);
+                        appTitle.classList.add("red-text");
+                         </script>
+                        
+per togliere...semplicemente: appTitle.classList.remove(".red-text");
 
 ------------------------------------------------------
 52. Come gestire gli eventi generati dalla tastiera
 -------------------------------------------------------
+EVENTO: Qualsiasi operazione fatta con tasto, mause,ecc.
+
+<script>
+
+           var searchButton = document.getElementById ("search-gif-btn");
+           var searchInput = document.querySelector("#search-gif-input");
+           
+           searchInput.addEventListener("keydown",function(event){
+               console.log(event.key);
+           });
 
 
+           searchButton.addEventListener("click",function(event){
+               console.log(event);
+           });
 
+           searchButton.addEventListener("mouseenter",function(event){
+               console.log(event);
+           })
+        </script>
+
+https://www.w3schools.com/jsref/met_document_addeventlistener.asp
 
 
 -----------------------------------
 53. Il concetto di event bubbling
 -----------------------------------
 
-
+non si vede...
 
 
 
