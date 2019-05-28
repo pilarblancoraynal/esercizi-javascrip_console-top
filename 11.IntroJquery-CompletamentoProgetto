@@ -145,12 +145,109 @@ function updateGifsHtml(){
  --------------------------------------------------------------
  60. Rimuovere le gif facenti parte ad una categoria
  --------------------------------------------------------------
+ Il ns file app.js:
+ var searchButton = $("#search-gif-btn");
+var searchInput = $("#search-gif-input");
+var favoriteTags = $(".tag");
+
+var disabledTags = [];
+var displayedGifs = [];
+
+searchInput.click(function(event){
+    console.log(event.key);
+ })
+           
+searchButton.click(function(event){
+     console.log(event);
+});
+
+favoriteTags.click(function(event){
+    console.log("Hai cliccato un tag");
+    $(this).toggleClass("is-success");
+    $(this).toggleClass("is-danger");
+
+    if($(this).hasClass("is-danger")){
+        disabledTags.push($(this).text().trim().toLowerCase());
+    } else {
+        disabledTags = disabledTags.filter(function(disabledTags){
+            return disabledTags = $(this).text().trim().toLowerCase();
+        });
+    }
+    hideDisabledGifs();
+    console.log(disabledTags);
+});
+==============>ATTENZIONE A PARTIRE DA QUI: ===============>
+$(".tag .delete").click(function(event){
+    event.stopPropagation();
+
+    var category = $(this).parent().text().trim().toLowerCase();
+    console.log(category);
+    displayedGifs = displayedGifs.filter(function(gif){
+       return gif.category != category;
+    });
+
+    updateGifsHtml();
+    $(this).parent().remove();
+});
+<============================================================>
+$.getJSON({
+ url: "http://api.giphy.com/v1/gifs/trending?api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY",
+ success: function(res){
+       var gifsData =res.data;
+
+       var gifsWithCategory = gifsData.map(function(gif){
+           var gifsWithCategory = gif;
+           gifsWithCategory.category = "trending";
+
+           return gifsWithCategory;
+       });
+
+       displayedGifs = displayedGifs.concat(gifsWithCategory);
+       updateGifsHtml();
+    }
+});
+
+function hideDisabledGifs(){
+    displayedGifs.forEach(function(gif){
+        if(disabledTags.indexOf(gif.category) >= 0){
+            $("#"+ gif.id).hide();
+        } else {
+            $("#"+ gif.id).show();
+        }
+    });
+}
+
+
+function updateGifsHtml(){
+      var html = "";
+      displayedGifs.forEach(function(gif){
+      console.log(gif);
+      var url = gif.images.downsized_medium.url;
+      var width = gif.images.downsized_medium.width;
+      var height = gif.images.downsized_medium.height;
+
+   html += "<div class='column is-one-quarter' id="+ gif.id +">";
+   html += "<img src="+ url + " width=" + width +" height=" + height + " />";
+   html += "</div>";
+    });
+
+   $("#gifs-container").html(html);
+  
+ }
  
  
- 
- 
- 
- 
+  --------------------------------------------------------------
+ 61. Sfida: cercare le gif utilizzando una parola chiave
+ --------------------------------------------------------------
+ //SFIDA:
+//1)Scrivere all'interno del campo di testo e prenderne il valore utilizzando JQuery searchInput.val()
+//2)Al click del bottone Add fare una chiamata al Search endpoint fornito da giphy
+//3)Aggiungere le gif fornite dalla chiamata giphy e quelle già presenti nel pannello
+
+
+ --------------------------------------------------------------
+62. Soluzione alla sfida
+ --------------------------------------------------------------
  
  
  
