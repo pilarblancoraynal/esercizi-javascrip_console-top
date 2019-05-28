@@ -217,7 +217,52 @@ https://www.w3schools.com/jsref/met_document_addeventlistener.asp
 53. Il concetto di event bubbling
 -----------------------------------
 
-non si vede...
+var favoriteTags = $(".tag");
 
+con:
+
+<div class="tags">
+                    <span class="tag is-success is-large favorite-category">
+                        Trending
+                        <button class="delete is-small"></button>
+                    </span>
+                    <span class="tag is-success is-large favorite-category">
+                        Cats
+                        <button class="delete is-small"></button>
+                    </span>
+                </div>
+                
+  QUINDI IL NS FILE.JS RIMANEREBBE COSì:
+  
+  <script>
+var searchButton = document.getElementById("search-gif-btn");
+var searchButton = document.querySelector("#search-gif-input");
+
+var tag = document.getElementsByClassName('tag')[0];
+console.log(tag)
+
+tag.addEventListener('click', function(){
+	console.log('Hai cliccato un tag');
+})
+
+var deleteTag = document.getElementsByClassName('delete')[0];
+
+deleteTag.addEventListener('click', function(event){
+	event.stopPropagation();                             =====>GRAZIE A QUESTO TAG NON MI DA L'AVVISO DI TUTTE E DUE (DELETE E CLICK) IN CONTEMPORANEA E MI METTE SOLO L'AVVISO PER DELETE
+	console.log('Hai il bottone delete di un tag');
+})
+
+searchInput.addEventListener('keydown', function(event){
+	console.log(event.key)
+});
+
+searchButton.addEventListener('click', function(event){
+	console.log(event.key)
+});
+
+searchButton.addEventListener('mouseenter', function(event){
+	console.log(event.key)
+});
+</script>
 
 
