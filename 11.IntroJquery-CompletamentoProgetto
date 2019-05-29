@@ -249,17 +249,21 @@ function updateGifsHtml(){
 62. Soluzione alla sfida
  --------------------------------------------------------------
  
- searchButton.click(function(event){
+ searchInput.click(function(event){
+    console.log(event.key);
+ })
+           
+searchButton.click(function(event){
      var inputText = searchInput.val();
      $.getJSON({
-         url: "http://api.giphy.com/v1/gifs/search?q"+ inputText +"&api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY",
+         url: "http://api.giphy.com/v1/gifs/search?q=" + inputText + "&api_key=n2TYvewq6CUaHki40p6XdKdt1pdC0AJY",
          success: function(res){
             var gifsData =res.data; 
             var gifsWithCategory = gifsData.map(function(gif){
-                var gifsWithCategory = gif;
-                gifsWithCategory.category = inputText;
+                var gifWithCategory = gif;
+                gifWithCategory.category = inputText;
      
-                return gifsWithCategory;
+                return gifWithCategory;
             });
      
             displayedGifs = displayedGifs.concat(gifsWithCategory);
@@ -276,7 +280,7 @@ function updateGifsHtml(){
          }
      })
 });
- 
+
 -----------------------------------------------------------------
 63. Come gestire i click su elementi aggiunti in maniera dinamica
 -----------------------------------------------------------------
